@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "172a5b97-2d42-404b-908e-295b018c1c64",
+		"name": "API-chord-praktikum-progmob",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "chords",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/chords",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"chords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chords/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "judul",
+							"value": "Lagu Untukmu",
+							"type": "text"
+						},
+						{
+							"key": "penyanyi",
+							"value": "Harmonia",
+							"type": "text"
+						},
+						{
+							"key": "level",
+							"value": "Sedang",
+							"type": "text"
+						},
+						{
+							"key": "genre",
+							"value": "Pop",
+							"type": "text"
+						},
+						{
+							"key": "durasi",
+							"value": "200",
+							"type": "text"
+						},
+						{
+							"key": "chord_dan_lirik",
+							"value": "Ini Chord",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/chords/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"chords",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chords/update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "judul",
+							"value": "Nusa Penida",
+							"type": "text"
+						},
+						{
+							"key": "penyanyi",
+							"value": "HarmoniA",
+							"type": "text"
+						},
+						{
+							"key": "level",
+							"value": "Mudah",
+							"type": "text"
+						},
+						{
+							"key": "genre",
+							"value": "Pop",
+							"type": "text"
+						},
+						{
+							"key": "durasi",
+							"value": "300",
+							"type": "text"
+						},
+						{
+							"key": "chord_dan_lirik",
+							"value": "ini Chord",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/chords/update",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"chords",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chords/delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/chords/delete",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"chords",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
