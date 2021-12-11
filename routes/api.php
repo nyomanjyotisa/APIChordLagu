@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Api\ChordController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ChordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('chords/create','App\Http\Controllers\Api\ChordController@create');
-Route::post('chords/update','App\Http\Controllers\Api\ChordController@update');
-Route::post('chords/delete','App\Http\Controllers\Api\ChordController@delete');
-Route::post('chords','App\Http\Controllers\Api\ChordController@post');
+Route::get('chords', [ChordController::class, 'index']);
+Route::post('chords/create', [ChordController::class, 'create']);
+Route::post('chords/update', [ChordController::class, 'update']);
+Route::post('chords/delete', [ChordController::class, 'delete']);

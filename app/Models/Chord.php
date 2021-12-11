@@ -12,7 +12,7 @@ class Chord extends Model
     }
 
     protected $fillable = [
-        'user_id', 'judul', 'penyanyi','level',
-        'durasi','chord_dan_lirik','created_at','updated_at',
+        'judul','penyanyi','level','genre',
+        'durasi','chord_dan_lirik','created_at','updated_at'
     ];
 }

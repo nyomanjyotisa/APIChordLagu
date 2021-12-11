@@ -15,15 +15,13 @@ class CreateChordsTable extends Migration
     {
         Schema::create('chords', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('judul')->nullable();
-            $table->string('penyanyi')->nullable();
-            $table->string('level')->nullable();
-            $table->string('durasi')->nullable();
-            $table->text('chord_dan_lirik')->nullable();
+            $table->string('judul');
+            $table->string('penyanyi');
+            $table->string('level');
+            $table->string('genre');
+            $table->string('durasi');
+            $table->text('chord_dan_lirik');
             $table->timestamps();
-    
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
