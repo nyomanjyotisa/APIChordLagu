@@ -17,9 +17,10 @@ class CreateChordsTable extends Migration
             $table->bigIncrements('id');
             $table->string('judul');
             $table->string('penyanyi');
-            $table->string('level');
             $table->string('genre');
-            $table->string('durasi');
+            $table->string('level');
+            $table->string('durasi_menit');
+            $table->string('durasi_detik');
             $table->text('chord_dan_lirik');
             $table->timestamps();
         });

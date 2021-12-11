@@ -13,6 +13,6 @@ class Chord extends Model
 
     protected $fillable = [
         'judul','penyanyi','level','genre',
-        'durasi','chord_dan_lirik','created_at','updated_at'
+        'durasi_menit', 'durasi_detik','chord_dan_lirik','created_at','updated_at'
     ];
 }

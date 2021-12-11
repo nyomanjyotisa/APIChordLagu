@@ -9,7 +9,12 @@ use App\Models\Chord;
 class ChordController extends Controller
 {
     public function index(Request $request){
-        return Chord::all();
+        $obats = Chord::all();
+
+        return response()->json([
+            'success'=>true,
+            'data'=>$obats
+        ]);
     }
 
     public function create(Request $request){
@@ -18,7 +23,8 @@ class ChordController extends Controller
         $chord->penyanyi = $request->penyanyi;
         $chord->level = $request->level;
         $chord->genre = $request->genre;
-        $chord->durasi = $request->durasi;
+        $chord->durasi_menit = $request->durasi_menit;
+        $chord->durasi_detik = $request->durasi_detik;
         $chord->chord_dan_lirik = $request->chord_dan_lirik;
         $chord->save();
 
@@ -35,7 +41,8 @@ class ChordController extends Controller
         $chord->penyanyi = $request->penyanyi;
         $chord->level = $request->level;
         $chord->genre = $request->genre;
-        $chord->durasi = $request->durasi;
+        $chord->durasi_menit = $request->durasi_menit;
+        $chord->durasi_detik = $request->durasi_detik;
         $chord->chord_dan_lirik = $request->chord_dan_lirik;
         $chord->update();
 
