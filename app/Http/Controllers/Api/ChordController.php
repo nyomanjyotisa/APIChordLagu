@@ -9,11 +9,11 @@ use App\Models\Chord;
 class ChordController extends Controller
 {
     public function index(Request $request){
-        $obats = Chord::all();
+        $chords = Chord::all();
 
         return response()->json([
             'success'=>true,
-            'data'=>$obats
+            'data'=>$chords
         ]);
     }
 
