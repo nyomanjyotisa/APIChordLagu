@@ -22,6 +22,7 @@ Route::post('chords/delete', [ChordController::class, 'delete']);
 
 
 Route::post('comments', [CommentController::class, 'index']);
+Route::post('comments/create', [CommentController::class, 'create']);
 
 //untuk ngambil semua chord dari user tertentu, parameter: id_user
 Route::post('chords/user', [ChordController::class, 'indexUser']);
