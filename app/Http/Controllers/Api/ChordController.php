@@ -19,6 +19,7 @@ class ChordController extends Controller
 
     public function create(Request $request){
         $chord = new Chord;
+        $chord->id_user = 1;
         $chord->judul = $request->judul;
         $chord->penyanyi = $request->penyanyi;
         $chord->level = $request->level;
@@ -59,6 +60,44 @@ class ChordController extends Controller
         return response()->json([
             'success'=>true,
             'message'=>'Berhasil Menghapus Data Chord',
+        ]);
+    }
+
+    public function indexUser(Request $request){
+        $chords = Chord::where('id_user', $request->id_user)->get();
+
+        return response()->json([
+            'success'=>true,
+            'data'=>$chords
+        ]);
+    }
+
+    public function indexGenre(Request $request){
+        $chords = Chord::where('genre', 'LIKE', '%'.$request->genre.'%')->get();
+
+        return response()->json([
+            'success'=>true,
+            'data'=>$chords
+        ]);
+    }
+
+    public function indexLevel(Request $request){
+        $chords = Chord::where('level', $request->level)->get();
+
+        return response()->json([
+            'success'=>true,
+            'data'=>$chords
+        ]);
+    }
+
+    public function indexSearch(Request $request){
+        $chords = Chord::where('judul', 'LIKE', '%'.$request->keyword.'%')
+                        ->orWhere('penyanyi', 'LIKE', '%'.$request->keyword.'%')
+                        ->get();
+
+        return response()->json([
+            'success'=>true,
+            'data'=>$chords
         ]);
     }
 }

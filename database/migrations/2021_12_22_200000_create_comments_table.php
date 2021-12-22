@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChordsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateChordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chords', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_user');
-            $table->string('judul');
-            $table->string('penyanyi');
-            $table->string('genre');
-            $table->string('level');
-            $table->string('durasi_menit');
-            $table->string('durasi_detik');
-            $table->text('chord_dan_lirik');
+            $table->unsignedBigInteger('id_chord');
+            $table->string('rating');
+            $table->string('comment');
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ class CreateChordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chords');
+        Schema::dropIfExists('comments');
     }
 }
