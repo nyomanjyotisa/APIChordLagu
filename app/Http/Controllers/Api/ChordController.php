@@ -11,10 +11,11 @@ class ChordController extends Controller
     public function index(Request $request){
         $chords = Chord::all();
 
-        return response()->json([
-            'success'=>true,
-            'data'=>$chords
-        ]);
+        return $chords;
+        // return response()->json([
+        //     // 'success'=>true,
+        //     'data'=>$chords
+        // ]);
     }
 
     public function create(Request $request){

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ChordController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\AuthController;
+use App\Models\Chord;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,16 +22,12 @@ use App\Http\Controllers\AuthController;
 //     return $request->user();
 // });
 
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
-
-], function ($router) {
-    Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+    Route::get('user/{id}/detail', [AuthController::class, 'getPengguna']);
+    Route::post('user/login', [AuthController::class, 'login']);
+    Route::post('user/register', [AuthController::class, 'register']);
+    Route::post('user/logout', [AuthController::class, 'logout']);
+    Route::post('user/refresh', [AuthController::class, 'refresh']);
+    Route::get('user/user-profile', [AuthController::class, 'userProfile']);    
 
     Route::get('chords', [ChordController::class, 'index']);
     Route::post('chords/create', [ChordController::class, 'create']);
@@ -51,7 +48,13 @@ Route::group([
 
     //untuk search, parameter: keyword
     Route::post('chords/search', [ChordController::class, 'indexSearch']);
-});
+
+    Route::get('chords/{judul}',function($judul){
+        $judul = isset($judul) ? trim($judul) : false;
+        $query=Chord::where('judul', 'LIKE', '%'.$judul. '%')->get();
+        return $query;
+    })->where('judul', '^[a-zA-Z ]*$');
+
 // Route::post('register', 'App\Http\Controllers\Api\AuthController@insertPengguna');
 // Route::post('login', 'App\Http\Controllers\Api\AuthController@login');
 
