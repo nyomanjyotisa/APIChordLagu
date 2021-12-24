@@ -33,4 +33,31 @@ class CommentController extends Controller
             'data' => $comment,
         ]);
     }
+
+    public function store(Request $request){
+        $comment = new Comment;
+        $comment->id = $request->id;
+        $comment->id_user = $request->id_user;
+        $comment->id_chord = $request->id_chord;
+        $comment->rating = $request->rating;
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        return response()->json([
+            'success'=>true,
+            'message'=>'Berhasil Menambahkan Data Comment',
+            'data' => $comment,
+        ]);
+    }
+
+    public function indexUser(Request $request){
+        $comments = Comment::where('chords.id_user', $request->id_user)
+                    ->join('chords', 'comments.id_chord', '=', 'chords.id')
+                    ->get();
+        // dd($comments);
+        return response()->json([
+            'success'=>true,
+            'data'=>$comments
+        ]);
+    }
 }

@@ -31,11 +31,15 @@ use App\Models\Chord;
 
     Route::get('chords', [ChordController::class, 'index']);
     Route::post('chords/create', [ChordController::class, 'create']);
+    Route::post('chords/store', [ChordController::class, 'store']);
     Route::post('chords/update', [ChordController::class, 'update']);
     Route::post('chords/delete', [ChordController::class, 'delete']);
+    Route::post('chords/deleteuser', [ChordController::class, 'deleteUser']);
     
     Route::post('comments', [CommentController::class, 'index']);
     Route::post('comments/create', [CommentController::class, 'create']);
+    Route::post('comments/store', [CommentController::class, 'store']);
+    Route::post('comments/user', [CommentController::class, 'indexUser']);
 
     //untuk ngambil semua chord dari user tertentu, parameter: id_user
     Route::post('chords/user', [ChordController::class, 'indexUser']);
