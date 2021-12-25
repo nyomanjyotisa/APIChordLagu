@@ -20,10 +20,7 @@ use App\Models\Chord;
 
     Route::get('user/{id}/detail', [AuthController::class, 'getPengguna']);
     Route::post('user/login', [AuthController::class, 'login']);
-    Route::post('user/register', [AuthController::class, 'register']);
-    Route::post('user/logout', [AuthController::class, 'logout']);
-    Route::post('user/refresh', [AuthController::class, 'refresh']);
-    Route::get('user/user-profile', [AuthController::class, 'userProfile']);    
+    Route::post('user/register', [AuthController::class, 'register']);  
 
     Route::get('chords', [ChordController::class, 'index']);
     Route::post('chords/store', [ChordController::class, 'store']);
@@ -38,3 +35,4 @@ use App\Models\Chord;
         $query=Chord::where('judul', 'LIKE', '%'.$judul. '%')->get();
         return $query;
     })->where('judul', '^[a-zA-Z ]*$');
+
