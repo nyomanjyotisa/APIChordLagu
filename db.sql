@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS `chords`;
 
 CREATE TABLE `chords` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id_user` bigint(20) unsigned NOT NULL,
   `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `penyanyi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -32,13 +33,26 @@ CREATE TABLE `chords` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `chords` */
 
-insert  into `chords`(`id`,`judul`,`penyanyi`,`genre`,`level`,`durasi_menit`,`durasi_detik`,`chord_dan_lirik`,`created_at`,`updated_at`) values 
-(1,'Comfortably Numb','Pink Floyd','-Pop -Rock','Sedang','1','1','Bm\r\nHello\r\n                 A\r\nis there anybody in there? \r\n     G              Em\r\nJust nod if you can hear me\r\n         Bm\r\nis there anyone home?','2021-12-18 11:46:51','2021-12-18 09:04:58'),
-(4,'Stairway To Heaven','Led Zeppelin','-Rock','Sedang','4','38','Am E+* C D F G Am\n \n          Am         E+ *\nThere’s a lady who’s sure\n         C           D\nAll that glitters is gold\n          F                    G  Am\nAnd she’s buying a stairway to heaven.\n         Am             E+ *\nWhen she gets there she knows\n       C              D\nIf the stores are all closed\n       F                         G    Am\nWith a word she can get what she came for.\nC    D    F    Am            C        G              D\nOoh, ooh, Ooh, ooh and she’s buying a stairway to heaven.','2021-12-18 09:08:29','2021-12-18 09:08:29');
+/*Table structure for table `comments` */
+
+DROP TABLE IF EXISTS `comments`;
+
+CREATE TABLE `comments` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id_user` bigint(20) unsigned NOT NULL,
+  `id_chord` bigint(20) unsigned NOT NULL,
+  `rating` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `comments` */
 
 /*Table structure for table `failed_jobs` */
 
@@ -58,6 +72,21 @@ CREATE TABLE `failed_jobs` (
 
 /*Data for the table `failed_jobs` */
 
+/*Table structure for table `favorites` */
+
+DROP TABLE IF EXISTS `favorites`;
+
+CREATE TABLE `favorites` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id_user` bigint(20) unsigned NOT NULL,
+  `id_chord` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `favorites` */
+
 /*Table structure for table `migrations` */
 
 DROP TABLE IF EXISTS `migrations`;
@@ -67,16 +96,17 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
-insert  into `migrations`(`id`,`migration`,`batch`) values 
-(1,'2014_10_12_000000_create_users_table',1),
-(2,'2014_10_12_100000_create_password_resets_table',1),
-(3,'2019_08_19_000000_create_failed_jobs_table',1),
-(4,'2019_12_14_000001_create_personal_access_tokens_table',1),
-(5,'2021_12_10_124558_create_chords_table',1);
+insert  into `migrations`(`id`,`migration`,`batch`) values (1,'2014_10_12_000000_create_users_table',1);
+insert  into `migrations`(`id`,`migration`,`batch`) values (2,'2014_10_12_100000_create_password_resets_table',1);
+insert  into `migrations`(`id`,`migration`,`batch`) values (3,'2019_08_19_000000_create_failed_jobs_table',1);
+insert  into `migrations`(`id`,`migration`,`batch`) values (4,'2019_12_14_000001_create_personal_access_tokens_table',1);
+insert  into `migrations`(`id`,`migration`,`batch`) values (5,'2021_12_10_124558_create_chords_table',1);
+insert  into `migrations`(`id`,`migration`,`batch`) values (6,'2021_12_22_200000_create_comments_table',1);
+insert  into `migrations`(`id`,`migration`,`batch`) values (7,'2021_12_22_201000_create_favorites_table',1);
 
 /*Table structure for table `password_resets` */
 
@@ -122,14 +152,15 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
+
+insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`created_at`,`updated_at`) values (1,'dipa','user@gmail.com',NULL,'user123','2021-12-25 02:15:22','2021-12-25 02:15:22');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
