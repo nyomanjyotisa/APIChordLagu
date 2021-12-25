@@ -21,7 +21,7 @@ class AuthController extends Controller
         $password = $request->password;
         $data = User::where('email', $email)->where('password', $password)->get();
         return response([
-            'statusAPI' => true,
+            'success' => true,
             'message' => 'email dan password sesuai',
             'data' => $data
         ], 200);
@@ -35,7 +35,7 @@ class AuthController extends Controller
         $user->password = $request->password;
         $user->save();
         return response([
-            'statusAPI' => true,
+            'success' => true,
             'message' => 'Pengguna berhasil ditambah'
         ], 200);
     }
